@@ -7,7 +7,7 @@ import { FaSnowflake, FaMountain } from 'react-icons/fa';
 axios.defaults.withCredentials = true;
 
 // RENDER'DAGI BACKEND HAVOLANGIZNI SHU YERGA QO'YING (oxirida / belgisi bo'lmasin)
-const API = "https://winterlux-xxxx.onrender.com";
+const API = "https://winterlux.onrender.com";
 
 function App() {
   const [user, setUser] = useState(null);
