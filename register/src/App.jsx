@@ -6,12 +6,16 @@ import { FaSnowflake, FaMountain } from 'react-icons/fa';
 
 axios.defaults.withCredentials = true;
 
+// RENDER'DAGI BACKEND HAVOLANGIZNI SHU YERGA QO'YING (oxirida / belgisi bo'lmasin)
+const API = "https://winterlux-xxxx.onrender.com";
+
 function App() {
   const [user, setUser] = useState(null);
 
   const handleSuccess = async (credentialResponse) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/google', {
+      // localhost o'rniga API o'zgaruvchisini ishlatamiz
+      const res = await axios.post(`${API}/api/auth/google`, {
         token: credentialResponse.credential
       });
       if (res.data.user) {
@@ -25,9 +29,14 @@ function App() {
   };
 
   const handleLogout = async () => {
-    await axios.post('http://localhost:5000/api/auth/logout');
-    setUser(null);
-    localStorage.removeItem('accessToken');
+    try {
+      await axios.post(`${API}/api/auth/logout`);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setUser(null);
+      localStorage.removeItem('accessToken');
+    }
   };
 
   // ==========================================
@@ -39,9 +48,9 @@ function App() {
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 blur-[120px] rounded-full"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-500/20 blur-[120px] rounded-full"></div>
         
-        <div className="relative z-10 w-full max-w-md p-1 rounded-3xl  from-white/20 to-white/5 backdrop-blur-2xl shadow-2xl">
+        <div className="relative z-10 w-full max-w-md p-1 rounded-3xl bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-2xl shadow-2xl">
           <div className="bg-[#0a1120]/80 p-10 rounded-[22px] flex flex-col items-center">
-            <div className=" from-cyan-500 to-blue-600 p-4 rounded-full mb-6 shadow-[0_0_30px_rgba(6,182,212,0.5)]">
+            <div className="bg-gradient-to-tr from-cyan-500 to-blue-600 p-4 rounded-full mb-6 shadow-[0_0_30px_rgba(6,182,212,0.5)]">
               <FiUser className="text-4xl text-white" />
             </div>
             <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">Xush kelibsiz</h1>
@@ -77,7 +86,6 @@ function App() {
           <h2 className="text-xl font-bold tracking-widest text-white uppercase hidden sm:block">Winter<span className="text-cyan-400">Lux</span></h2>
         </div>
         
-        {/* Navbar markaziy menyu */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
           <a href="#" className="hover:text-cyan-400 transition-colors">Asosiy</a>
           <a href="#" className="hover:text-cyan-400 transition-colors">Kurortlar</a>
@@ -85,14 +93,12 @@ function App() {
           <a href="#" className="hover:text-cyan-400 transition-colors">Biz haqimizda</a>
         </div>
 
-        {/* Profil qismi */}
         <div className="flex items-center gap-4">
           <div className="group relative flex items-center gap-3 bg-white/5 hover:bg-white/10 py-1.5 px-2 pr-4 rounded-full border border-white/10 transition-all cursor-pointer">
             <img src={user.picture} alt="Profile" className="w-9 h-9 rounded-full border-2 border-cyan-400/50 shadow-[0_0_10px_rgba(34,211,238,0.3)]" />
             <span className="text-sm font-semibold text-gray-200 hidden sm:block">{user.name}</span>
             <FiChevronDown className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
             
-            {/* Dropdown menyu (ustiga borganda chiqadi) */}
             <div className="absolute top-full right-0 mt-3 w-56 bg-[#0a1120] border border-white/10 rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 overflow-hidden">
               <div className="p-4 border-b border-white/5">
                 <p className="text-sm font-bold text-white">{user.name}</p>
@@ -124,7 +130,7 @@ function App() {
           
           <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-[1.1] tracking-tighter drop-shadow-2xl">
             Qishning <br/>
-            <span className="text-transparent bg-clip-text  from-cyan-300 via-blue-400 to-indigo-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400">
               sehrli olami
             </span> <br/>
             sizni kutmoqda.
@@ -204,7 +210,7 @@ function App() {
           {/* Card 3 */}
           <div className="group relative bg-[#0a1120] rounded-3xl overflow-hidden border border-white/5 hover:border-purple-500/30 transition-all duration-500 hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] flex flex-col">
             <div className="h-72 relative overflow-hidden">
-               <div className="absolute inset-0 from-[#0a1120] via-transparent to-transparent z-10"></div>
+               <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120] via-transparent to-transparent z-10"></div>
                <img src="https://images.unsplash.com/photo-1478265409131-1f65c88f965c?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" alt="Mountain" />
                <div className="absolute top-4 left-4 z-20 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2">
                  <FiMapPin className="text-purple-400" size={14} />
