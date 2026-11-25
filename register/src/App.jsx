@@ -39,9 +39,9 @@ function App() {
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 blur-[120px] rounded-full"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-500/20 blur-[120px] rounded-full"></div>
         
-        <div className="relative z-10 w-full max-w-md p-1 rounded-3xl bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-2xl shadow-2xl">
+        <div className="relative z-10 w-full max-w-md p-1 rounded-3xl  from-white/20 to-white/5 backdrop-blur-2xl shadow-2xl">
           <div className="bg-[#0a1120]/80 p-10 rounded-[22px] flex flex-col items-center">
-            <div className="bg-gradient-to-tr from-cyan-500 to-blue-600 p-4 rounded-full mb-6 shadow-[0_0_30px_rgba(6,182,212,0.5)]">
+            <div className=" from-cyan-500 to-blue-600 p-4 rounded-full mb-6 shadow-[0_0_30px_rgba(6,182,212,0.5)]">
               <FiUser className="text-4xl text-white" />
             </div>
             <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">Xush kelibsiz</h1>
@@ -124,7 +124,7 @@ function App() {
           
           <h1 className="text-6xl md:text-8xl font-black text-white mb-6 leading-[1.1] tracking-tighter drop-shadow-2xl">
             Qishning <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400">
+            <span className="text-transparent bg-clip-text  from-cyan-300 via-blue-400 to-indigo-400">
               sehrli olami
             </span> <br/>
             sizni kutmoqda.
@@ -204,7 +204,7 @@ function App() {
           {/* Card 3 */}
           <div className="group relative bg-[#0a1120] rounded-3xl overflow-hidden border border-white/5 hover:border-purple-500/30 transition-all duration-500 hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] flex flex-col">
             <div className="h-72 relative overflow-hidden">
-               <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120] via-transparent to-transparent z-10"></div>
+               <div className="absolute inset-0 from-[#0a1120] via-transparent to-transparent z-10"></div>
                <img src="https://images.unsplash.com/photo-1478265409131-1f65c88f965c?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" alt="Mountain" />
                <div className="absolute top-4 left-4 z-20 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2">
                  <FiMapPin className="text-purple-400" size={14} />
