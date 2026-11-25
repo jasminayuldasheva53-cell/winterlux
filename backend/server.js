@@ -11,7 +11,8 @@ app.use(cookieParser());
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use('/api/auth', authRoutes);
 
-mongoose.connect(process.env.MONGO_URI).then(() => {
-  console.log('MongoDB ulandi');
-  app.listen(process.env.PORT || 5000, () => console.log('Server ishlayapti'));
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server ${PORT} portda ishlayapti`);
 });
