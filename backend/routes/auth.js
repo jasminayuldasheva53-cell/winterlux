@@ -38,7 +38,7 @@ router.post('/google', async (req, res) => {
   } catch (error) {
     console.error("Backenddagi xato:", error.message);
     res.status(401).json({ error: "Google autentifikatsiyasida xatolik" });
-  }
+}
 });
 
 router.post('/logout', (req, res) => {
