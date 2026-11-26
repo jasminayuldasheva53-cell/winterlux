@@ -23,8 +23,8 @@ const PORT = process.env.PORT || 5000;
 const startServer = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
-      serverSelectionTimeoutMS: 30000, // 30 soniya kutish
-      bufferTimeoutMS: 30000, // 30 soniya buffer
+      serverSelectionTimeoutMS: 60000, // 30 soniya kutish
+      bufferTimeoutMS: 60000, // 30 soniya buffer
     });
     console.log('✅ MongoDB muvaffaqiyatli ulandi!');
     
